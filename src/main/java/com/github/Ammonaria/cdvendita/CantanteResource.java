@@ -1,7 +1,7 @@
 package com.github.Ammonaria.cdvendita;
 
 import com.github.Ammonaria.cdvendita.exception.FieldValidationException;
-import com.github.Ammonaria.cdvendita.model.User;
+import com.github.Ammonaria.cdvendita.model.Cantante;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,20 +9,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by amalia on 31/10/2014.
+ * Created by amalia on 30/10/2014.
  */
-public class UserResource extends Controller{
+public class CantanteResource extends Controller {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         try {
-            User theuser = User.validate(User.class, request.getParameter("idUser"));
-            if (theuser == null)
+            Cantante thecantante = Cantante.validate(Cantante.class, request.getParameter("idCantante"));
+            if (thecantante == null)
                 throw new FieldValidationException();
 
 
             PrintWriter writer = response.getWriter();
-            writer.println(theuser.toJson());
+            writer.println(thecantante.toJson());
         } catch (FieldValidationException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -35,12 +35,12 @@ public class UserResource extends Controller{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try{
             String json = this.readBody(request.getReader());
-            User newuser = User.fromJson(User.class, json);
-            System.out.println(newuser.toJson());
-            newuser.save();
+            Cantante newcantante = Cantante.fromJson(Cantante.class, json);
+            System.out.println(newcantante.toJson());
+            newcantante.save();
 
             PrintWriter writer = response.getWriter();
-            writer.println(newuser.toJson());
+            writer.println(newcantante.toJson());
         } catch (FieldValidationException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -52,12 +52,12 @@ public class UserResource extends Controller{
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try{
             String json = this.readBody(request.getReader());
-            User newuser = User.fromJson(User.class, json);
+            Cantante newcantante = Cantante.fromJson(Cantante.class, json);
 
-            newuser.update();
+            newcantante.update();
 
             PrintWriter writer = response.getWriter();
-            writer.println(newuser.toJson());
+            writer.println(newcantante.toJson());
         } catch (FieldValidationException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -68,8 +68,8 @@ public class UserResource extends Controller{
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
         try{
-            User theuser = User.validate(User.class, request.getParameter("idUser"));
-            theuser.delete();
+            Cantante thecantante = Cantante.validate(Cantante.class, request.getParameter("idCantante"));
+            thecantante.delete();
 
         } catch (FieldValidationException e) {
             e.printStackTrace();
@@ -80,4 +80,7 @@ public class UserResource extends Controller{
 
 
 }
+
+
+
 

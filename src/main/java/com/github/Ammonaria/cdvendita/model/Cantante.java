@@ -1,15 +1,46 @@
 package com.github.Ammonaria.cdvendita.model;
 
+import javax.persistence.*;
+import java.util.Set;
+
 /**
  * Created by amalia on 30/10/2014.
  */
-public class Cantante {
+@Entity
+public class Cantante extends JsonObject {
 
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(nullable=false)
+    private Long idCantante;
+
+    @Column(nullable=false)
     private String nome;
+    @Column(nullable=false)
     private String cognome;
+    @Column(nullable = false)
     private String nomearte;
 
 
+
+    @OneToMany(mappedBy="cantante", fetch = FetchType.EAGER)
+
+    private Set<CD> cd;
+    public Set<CD> getCd() {
+        return cd;
+    }
+
+    public void setCd(Set<CD> cd) {
+        this.cd = cd;
+    }
+    public Long getId() {
+        return idCantante;
+    }
+
+    public void setId(Long idCantante) {
+        this.idCantante = idCantante;
+    }
 
     //definire i metodi get e set
 

@@ -1,8 +1,9 @@
 package com.github.Ammonaria.cdvendita.util;
 
-import com.githubAmmonaria.biblioteca.model.Autore;
-import com.githubAmmonaria.biblioteca.model.Book;
-import com.githubAmmonaria.biblioteca.util.Properties;
+import com.github.Ammonaria.cdvendita.model.CD;
+import com.github.Ammonaria.cdvendita.model.Cantante;
+import com.github.Ammonaria.cdvendita.model.Profilo;
+import com.github.Ammonaria.cdvendita.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -10,12 +11,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-/**
- * biblio
- * Created by Pasquale Boemio <boemianrapsodi@gmail.com>
- * <p/>
- * 19 October 2014.
- */
+
 public class DBHandler implements ServletContextListener {
   private static SessionFactory dbSessionFactory;
 
@@ -34,8 +30,11 @@ public class DBHandler implements ServletContextListener {
             .setProperty("hibernate.connection.username",Properties.get(Properties.DB_USERNAME))
             .setProperty("hibernate.connection.password",Properties.get(Properties.DB_PASSWORD))
             .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
-            .addAnnotatedClass(Book.class)
-            .addAnnotatedClass(Autore.class);
+            .addAnnotatedClass(CD.class)
+            .addAnnotatedClass(Cantante.class)
+            .addAnnotatedClass(User.class)
+            .addAnnotatedClass(Profilo.class);
+
 
     if(Properties.get(Properties.TEST_ENV) != null)
       config.setProperty("hibernate.hbm2ddl.auto", "create");

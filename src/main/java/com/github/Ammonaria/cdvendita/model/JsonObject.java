@@ -2,12 +2,8 @@ package com.github.Ammonaria.cdvendita.model;
 
 import com.google.gson.Gson;
 
-/**
- * biblio
- * Created by Pasquale Boemio <boemianrapsodi@gmail.com>
- * <p/>
- * 19 October 2014.
- */
+
+
 public abstract class JsonObject extends Model {
 
   public String toJson() {

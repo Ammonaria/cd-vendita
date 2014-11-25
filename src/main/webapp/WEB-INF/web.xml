@@ -2,6 +2,61 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app metadata-complete="true">
   <display-name>Archetype Created Web Application</display-name>
+
+    <servlet>
+        <servlet-name>CdResource</servlet-name>
+        <servlet-class>com.github.Ammonaria.cdvendita.CdResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CdResource</servlet-name>
+        <url-pattern>/cdvendita/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CantanteResource</servlet-name>
+        <servlet-class>com.github.Ammonaria.cdvendita.CantanteResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CantanteResource</servlet-name>
+        <url-pattern>/cantante/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>UserResource</servlet-name>
+        <servlet-class>com.github.Ammonaria.cdvendita.UserResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserResource</servlet-name>
+        <url-pattern>/user/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfiloResource</servlet-name>
+        <servlet-class>com.github.Ammonaria.cdvendita.ProfiloResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfiloResource</servlet-name>
+        <url-pattern>/profilo/*</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+    <listener>
+        <listener-class>com.github.Ammonaria.cdvendita.util.DBHandler</listener-class>
+    </listener>
+    <display-name>Archetype Created Web Application</display-name>‏
+
+
+
+
+
+
+
+
 </web-app>
